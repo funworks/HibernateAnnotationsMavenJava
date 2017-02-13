@@ -1,11 +1,16 @@
 package com.relationships.dto;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -30,6 +35,9 @@ public class Person {
 	@OneToOne (cascade=CascadeType.ALL)
 	@JoinColumn(name="MOTHER_ID")
 	private Person mother;
+	
+	@OneToMany(fetch=FetchType.EAGER, mappedBy="person")
+	private List<Car> cars = new ArrayList<Car>();
 	
 	public Person() {
 		
@@ -92,6 +100,14 @@ public class Person {
 
 	public void setMother(Person mother) {
 		this.mother = mother;
+	}
+
+	public List<Car> getCars() {
+		return cars;
+	}
+
+	public void setCars(List<Car> cars) {
+		this.cars = cars;
 	}
 
 }

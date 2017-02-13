@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 
 import org.hibernate.Session;
 
+import com.relationships.dto.Car;
 import com.relationships.dto.Passport;
 import com.relationships.dto.Person;
 import com.relationships.util.HibernateUtil;
@@ -26,6 +27,12 @@ public class App
         Person person = new Person("Mukesh Garg", selfPassport, father, mother);
         
         s.save(person);
+        
+        s.save(new Car("AB-01C-1234", person));
+        s.save(new Car("DE-01F-5678", person));
+        
+        s.save(new Car("GH-01I-9012", mother));
+        
         s.getTransaction().commit();
         s.close();
         HibernateUtil.shutdown();
