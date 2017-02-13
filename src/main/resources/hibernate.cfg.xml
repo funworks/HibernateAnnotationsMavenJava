@@ -10,10 +10,11 @@
         <property name="hibernate.connection.username">eclipse</property>
         <property name="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</property>
         <property name="show_sql">true</property>
-        <property name="hbm2ddl.auto">update</property>
+        <property name="hbm2ddl.auto">create</property>
         
         <mapping class="com.relationships.dto.Person"></mapping>
         <mapping class="com.relationships.dto.Passport"></mapping>
         <mapping class="com.relationships.dto.Car"></mapping>
+        <mapping class="com.relationships.dto.Address"></mapping>
     </session-factory>
 </hibernate-configuration>

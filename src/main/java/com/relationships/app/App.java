@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 
 import org.hibernate.Session;
 
+import com.relationships.dto.Address;
 import com.relationships.dto.Car;
 import com.relationships.dto.Passport;
 import com.relationships.dto.Person;
@@ -30,8 +31,16 @@ public class App
         
         s.save(new Car("AB-01C-1234", person));
         s.save(new Car("DE-01F-5678", person));
-        
         s.save(new Car("GH-01I-9012", mother));
+        
+        Address addr1 = new Address("15 Segar Street, Danbury");
+        Address addr2 = new Address("24 Kings Street, NYC");
+        s.save(addr1);
+        s.save(addr2);
+        person.getAddresses().add(addr1);
+        person.getAddresses().add(addr2);
+        father.getAddresses().add(addr1);
+        mother.getAddresses().add(addr2);
         
         s.getTransaction().commit();
         s.close();

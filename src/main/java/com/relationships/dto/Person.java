@@ -10,6 +10,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
@@ -38,6 +39,9 @@ public class Person {
 	
 	@OneToMany(fetch=FetchType.EAGER, mappedBy="person")
 	private List<Car> cars = new ArrayList<Car>();
+	
+	@ManyToMany (cascade=CascadeType.ALL)
+	private List<Address> addresses = new ArrayList<Address>();
 	
 	public Person() {
 		
@@ -108,6 +112,14 @@ public class Person {
 
 	public void setCars(List<Car> cars) {
 		this.cars = cars;
+	}
+
+	public List<Address> getAddresses() {
+		return addresses;
+	}
+
+	public void setAddresses(List<Address> addresses) {
+		this.addresses = addresses;
 	}
 
 }
