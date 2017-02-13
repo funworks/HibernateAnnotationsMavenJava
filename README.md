@@ -13,3 +13,5 @@ Steps:
 4. Run mvn clean install in project root directory OR clean build project using Eclipse
 
 5. Run App.java as Java application
+
+NOTE: This application is written with Java 8 and it should work fine with Java 7 as well. But no guarantees!

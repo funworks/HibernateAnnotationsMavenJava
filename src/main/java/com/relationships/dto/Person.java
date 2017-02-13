@@ -13,6 +13,7 @@ public class Person {
 	
 	@Id
 	@GeneratedValue
+	@Column(name="PERSON_ID")
 	private Integer id;
 	
 	@Column (name="NAME", nullable=false, length=20)

@@ -19,7 +19,7 @@ public class App
         
         Passport selfPassport = new Passport("G2266012", "New Delhi", sdf.parse("31-08-2009"), sdf.parse("31-08-2019"));
         
-        Passport fatherPassport = new Passport("J2446032", "Ambala", sdf.parse("15-10-2010"), sdf.parse("15-10-2020"));
+        Passport fatherPassport = new Passport("J2446032", "New Delhi", sdf.parse("15-10-2010"), sdf.parse("15-10-2020"));
         
         Person father = new Person("Amit Garg", fatherPassport);
         Person mother = new Person("Mamta Garg");
