@@ -8,6 +8,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
@@ -18,7 +19,7 @@ import javax.persistence.OneToOne;
 public class Person {
 	
 	@Id
-	@GeneratedValue
+	@GeneratedValue (strategy=GenerationType.IDENTITY)
 	@Column(name="PERSON_ID")
 	private Integer id;
 	
@@ -40,7 +41,7 @@ public class Person {
 	@JoinColumn(name="MOTHER_ID")
 	private Person mother;
 	
-	//One to Many Bidirectional Mapping (See "person" field in Car class)
+	//Bidirectional One to Many Mapping (See "person" field in Car class)
 	@OneToMany(fetch=FetchType.EAGER, mappedBy="person")
 	private List<Car> cars = new ArrayList<Car>();
 	
