@@ -4,6 +4,7 @@
 		"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
     <session-factory>
+    	<!-- Hibernate and Database Properties -->
         <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
         <property name="hibernate.connection.password">eclipse</property>
         <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/hbdb</property>
@@ -12,9 +13,11 @@
         <property name="show_sql">true</property>
         <property name="hbm2ddl.auto">create</property>
         
+        <!-- These mappings are required to tell hibernate that these are the classes which it should scan for Annotations -->
         <mapping class="com.relationships.dto.Person"></mapping>
         <mapping class="com.relationships.dto.Passport"></mapping>
         <mapping class="com.relationships.dto.Car"></mapping>
         <mapping class="com.relationships.dto.Address"></mapping>
+        <mapping class="com.relationships.dto.Skill"></mapping>
     </session-factory>
 </hibernate-configuration>

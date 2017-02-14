@@ -19,6 +19,7 @@ public class Car {
 	@Column(name="REGISTRATION_NUMBER", nullable=false, length=30)
 	private String registrationNumber;
 	
+	//Many to One Bidirectional Mapping (See "cars" field in Person class)
 	@ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name = "PERSON_ID")
 	private Person person;

@@ -9,6 +9,7 @@ import com.relationships.dto.Address;
 import com.relationships.dto.Car;
 import com.relationships.dto.Passport;
 import com.relationships.dto.Person;
+import com.relationships.dto.Skill;
 import com.relationships.util.HibernateUtil;
 
 public class App 
@@ -41,6 +42,15 @@ public class App
         person.getAddresses().add(addr2);
         father.getAddresses().add(addr1);
         mother.getAddresses().add(addr2);
+        
+        Skill skill1 = new Skill("Java");
+        Skill skill2 = new Skill("Hibernate");
+        s.save(skill1);
+        s.save(skill2);
+        person.addSkill(skill1);
+        person.addSkill(skill2);
+        father.addSkill(skill1);
+        father.addSkill(skill2);
         
         s.getTransaction().commit();
         s.close();

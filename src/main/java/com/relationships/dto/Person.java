@@ -25,23 +25,32 @@ public class Person {
 	@Column (name="NAME", nullable=false, length=20)
 	private String name;
 	
+	//One to One Mapping to another table
 	@OneToOne (cascade=CascadeType.ALL)
 	@JoinColumn(name="PASSPORT_NUMBER")
 	private Passport passport;
-	
+
+	//One to One Mapping to same table
 	@OneToOne (cascade=CascadeType.ALL)
 	@JoinColumn(name="FATHER_ID")
 	private Person father;
 	
+	//One to One Mapping to same table
 	@OneToOne (cascade=CascadeType.ALL)
 	@JoinColumn(name="MOTHER_ID")
 	private Person mother;
 	
+	//One to Many Bidirectional Mapping (See "person" field in Car class)
 	@OneToMany(fetch=FetchType.EAGER, mappedBy="person")
 	private List<Car> cars = new ArrayList<Car>();
 	
-	@ManyToMany (cascade=CascadeType.ALL)
+	//Unidirectional Many to Many relationship 
+	@ManyToMany (cascade={CascadeType.PERSIST, CascadeType.MERGE})
 	private List<Address> addresses = new ArrayList<Address>();
+	
+	//Bidirectional Many to Many relationship
+	@ManyToMany (cascade={CascadeType.PERSIST, CascadeType.MERGE})
+	private List<Skill> skills = new ArrayList<Skill>();
 	
 	public Person() {
 		
@@ -120,6 +129,19 @@ public class Person {
 
 	public void setAddresses(List<Address> addresses) {
 		this.addresses = addresses;
+	}
+
+	public List<Skill> getSkills() {
+		return skills;
+	}
+
+	public void setSkills(List<Skill> skills) {
+		this.skills = skills;
+	}
+	
+	public void addSkill(Skill skill) {
+		skills.add(skill);
+		skill.getPersons().add(this);
 	}
 
 }
